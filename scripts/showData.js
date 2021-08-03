@@ -15,6 +15,7 @@ async function getData(url) {
 }
 
 function showMeals(meals, parent) {
+    //parent.innerHTML = null;
     meals.forEach(({ strArea, strCategory, strInstruction, strMeal, strSource, strYoutube, strMealThumb }) => {
         //console.log(strArea);
         //console.log(strMealThumb);
