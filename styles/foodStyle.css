@@ -1,0 +1,46 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 4% 5px 4%;
+  font-size: 18px;
+  background-color: #0f171e;
+  background-image: linear-gradient(180deg, #1b2530 0, rgba(27, 37, 48, 0.85));
+  color: rgba(242, 244, 246, 0.9);
+}
+.easyAcesses {
+  display: flex;
+  justify-content: space-between;
+}
+.easyAcesses > h3 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+h3 > a {
+  text-decoration: none;
+  color: rgba(242, 244, 246, 0.9);
+}
+#searchFood {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#searchFood > input {
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  width: 300px;
+}
+#searchFood > button {
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 4px;
+}
+.content {
+  margin-top: 20px;
+  padding: 10px;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./styles/foodStyle.css">
+        <title>
+
+        </title>
+        <style>
+            img{
+                width: 200px;
+            }
+        </style>
+
+    </head>
+    <body>
+        
+        <div id="header"></div>
+        <div id="searchFood">
+            <input oninput="searchRes()" type="text" placeholder="Search.." id="query">
+            <button>Search</button>
+        </div>
+
+        <div class="content" id="content">
+
+        </div>
+    </body>
+</html>
+
+<script type="module">
+    import myNavbar from './components/navbar.js';
+    //import { getData, appendData } from './scripts/showData.js';
+
+    var divHead = document.getElementById("header");
+    divHead.innerHTML = myNavbar();
+    //console.log(getData);
+
+</script>
+
+<script>
+    //console.log(getData);
+    var divCon = document.getElementById("content");
+    async function searchRes() {
+        try {
+            var search = document.getElementById("query").value;
+            let res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`);
+            let data = await res.json();
+            //console.log("data: ", data.meals);
+            var {meals} = data;
+            console.log(meals);
+            showMeals(meals);
+        }
+        catch (err) {
+            console.log("err:", err);
+        }
+    }
+
+
+    function showMeals(meals) {
+        divCon.innerHTML=null;
+        meals.forEach(({strArea,strCategory,strInstruction,strMeal,strSource,strYoutube, strMealThumb}) => {
+            console.log(strArea);
+            console.log(strMealThumb);
+            let div = document.createElement("div");
+            let img = document.createElement("img");
+            let name = document.createElement("div");
+            let link = document.createElement("div");
+            img.src = strMealThumb;
+            name.innerHTML = strMeal;
+            link.innerHTML = strSource;
+            div.append(img,name, link);
+            divCon.append(div);
+        });
+        
+        
+    }
+
+</script>
