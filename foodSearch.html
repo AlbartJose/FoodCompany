@@ -26,14 +26,31 @@
 </html>
 
 <script type="module">
+    var timerId;
     import myNavbar from './components/navbar.js';
     import { getData, showMeals } from './scripts/showData.js';
     var divHead = document.getElementById("header");
     divHead.innerHTML = myNavbar();
     let searchIn = document.getElementById("query");
     searchIn.addEventListener("input",function () {
-        search();
+        throttleFn();
     })
+
+
+    function throttleFn() {
+
+        if (timerId) {                     //Why?? undefined timer id is false Hence 1st time it will go down;
+            return false;
+        }
+
+        timerId = setTimeout(() => {      //settimeout to delay request//After the first timerId is given a number, it will not come here due to the above if
+            search();
+            timerId = undefined;         //Why??//Because Only one timeout remains. After it is excuted we make the timerId undefined for the next search.
+        }, 1000);
+
+        // console.log("time", timerId);
+        //main();
+    }
 
     function search() {
         var parent = document.getElementById("content");
@@ -45,7 +62,6 @@
         let response = getData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
         response.then(({ meals }) => {
             parent.innerHTML = null;
-            //console.log(data);
             showMeals(meals, parent);
         });
     }

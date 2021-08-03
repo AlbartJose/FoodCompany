@@ -1,4 +1,3 @@
-//fetch('https://fakestoreapi.com/products/category/jewelery')
 
 async function getData(url) {
     try {
@@ -15,10 +14,7 @@ async function getData(url) {
 }
 
 function showMeals(meals, parent) {
-    //parent.innerHTML = null;
     meals.forEach(({ strArea, strCategory, strInstruction, strMeal, strSource, strYoutube, strMealThumb }) => {
-        //console.log(strArea);
-        //console.log(strMealThumb);
         let div = document.createElement("div");
         let img = document.createElement("img");
         let name = document.createElement("div");
